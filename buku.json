@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "judul": "Laskar Pelangi",
+    "penulis": "Andrea Hirata",
+    "harga": 75000,
+    "kategori": "Novel",
+    "deskripsi": "Novel inspiratif tentang perjuangan anak-anak di Belitung untuk mendapatkan pendidikan.",
+    "stok": 12
+  },
+  {
+    "id": 2,
+    "judul": "Filosofi Teras",
+    "penulis": "Henry Manampiring",
+    "harga": 85000,
+    "kategori": "Pengembangan Diri",
+    "deskripsi": "Buku tentang ajaran stoikisme untuk membantu kita hidup lebih tenang dan bahagia.",
+    "stok": 8
+  },
+  {
+    "id": 3,
+    "judul": "Atomic Habits",
+    "penulis": "James Clear",
+    "harga": 90000,
+    "kategori": "Pengembangan Diri",
+    "deskripsi": "Panduan praktis untuk membentuk kebiasaan baik dan menghilangkan kebiasaan buruk.",
+    "stok": 15
+  },
+  {
+    "id": 4,
+    "judul": "Pemrograman Dasar",
+    "penulis": "Budi Raharjo",
+    "harga": 65000,
+    "kategori": "Teknologi",
+    "deskripsi": "Buku pengantar belajar pemrograman web menggunakan HTML, CSS, dan JavaScript untuk pemula.",
+    "stok": 20
+  },
+  {
+    "id": 5,
+    "judul": "Clean Code",
+    "penulis": "Robert C. Martin",
+    "harga": 120000,
+    "kategori": "Teknologi",
+    "deskripsi": "Panduan praktis menulis kode yang bersih, mudah dipahami, dan mudah dirawat.",
+    "stok": 6
+  },
+  {
+    "id": 6,
+    "judul": "Bumi Manusia",
+    "penulis": "Pramoedya Ananta Toer",
+    "harga": 95000,
+    "kategori": "Sastra",
+    "deskripsi": "Kisah pergerakan dan perjuangan anak muda pribumi di era kolonial Hindia Belanda.",
+    "stok": 10
+  }
+]

@@ -1,0 +1,254 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Pengaturan untuk seluruh halaman (body) */
+body {
+    background-color: #f5f5dc; /* Warna background krem */
+    color: #333333;            /* Warna teks abu-abu gelap */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Pengaturan untuk menu navigasi */
+.menu {
+    background-color: #d2b48c; /* Warna background cokelat muda */
+    padding: 15px;
+    text-align: center;        /* Membuat teks di tengah */
+}
+
+/* Pengaturan link (tombol) di menu navigasi */
+.menu a {
+    color: white;              /* Warna teks putih */
+    text-decoration: none;     /* Menghilangkan garis bawah pada link */
+    font-size: 18px;
+    margin: 0 15px;            /* Memberi jarak antar menu */
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.menu a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Pengaturan kotak utama yang membungkus isi website */
+.konten {
+    width: min(90%, 960px);    /* Lebar responsif */
+    max-width: 900px;
+    margin: 20px auto;         /* Membuat kotak berada di tengah layar */
+    background-color: white;   /* Warna kotak putih */
+    padding: 25px 30px;
+    border: 2px solid #d2b48c; /* Garis pinggir cokelat muda */
+    border-radius: 10px;       /* Membuat sudut kotak melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Pengaturan judul h1 dan h2 */
+h1 {
+    color: #8b4513;            /* Warna judul cokelat tua */
+    text-align: center;        /* Teks di tengah */
+    margin-top: 10px;
+}
+
+h2 {
+    color: #8b4513;
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Pengaturan paragraf */
+p {
+    font-size: 16px;
+    line-height: 1.5;          /* Jarak antar baris kalimat */
+    margin: 6px 0;
+}
+
+/* Pengaturan gambar */
+img {
+    width: 300px;              /* Ukuran gambar pada layar besar */
+    max-width: 100%;
+    display: block;            /* Mengubah gambar menjadi kotak blok */
+    margin: 10px auto;         /* Gambar berada di tengah */
+    border: 1px solid #ccc;    /* Garis pinggir tipis abu-abu */
+    border-radius: 5px;        /* Sudut gambar melengkung sedikit */
+}
+
+/* Pengaturan daftar/list */
+ul {
+    padding-left: 40px;
+}
+
+li {
+    margin-bottom: 10px;       /* Jarak ke bawah antar item list */
+    font-size: 16px;
+}
+
+/* Kotak Filter dan Pencarian API */
+.filter-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0 15px 0;
+    justify-content: center;
+}
+
+.filter-box input,
+.filter-box select {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1.5px solid #d2b48c;
+    border-radius: 6px;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-box input {
+    flex: 1;
+    min-width: 220px;
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+    border-color: #8b4513;
+    box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.15);
+}
+
+/* Status Pesan API */
+.status-pesan {
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.status-pesan.loading {
+    background-color: #e8f4fd;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+.status-pesan.sukses {
+    background-color: #e2f0d9;
+    color: #276a3c;
+    border-color: #c3e6cb;
+}
+
+.status-pesan.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+/* Pengaturan untuk setiap buku di halaman daftar buku */
+.buku-item {
+    border: 1px solid #e2d7c5;
+    background-color: #fffdfa;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 15px;
+    transition: all 0.2s ease;
+}
+
+.buku-item:hover {
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.1);
+    transform: translateY(-2px);
+}
+
+.buku-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-kategori {
+    background-color: #d2b48c;
+    color: white;
+}
+
+.buku-harga {
+    color: #8b4513;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.buku-stok {
+    font-size: 14px;
+    color: #555;
+}
+
+.buku-deskripsi {
+    color: #555;
+    margin-top: 8px;
+}
+
+.btn-detail {
+    margin-top: 10px;
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn-detail:hover {
+    background-color: #6a340d;
+}
+
+.pesan-kosong {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Pengaturan footer (bagian bawah) */
+footer {
+    background-color: #d2b48c;     /* Cokelat muda */
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 30px;              /* Jarak dari atas */
+}
+
+/* Responsif pada layar HP */
+@media (max-width: 600px) {
+    .konten {
+        width: 94%;
+        padding: 15px;
+    }
+    .filter-box {
+        flex-direction: column;
+    }
+    .filter-box input,
+    .filter-box select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.btn-detail:focus-visible, .menu a:focus-visible {
+    outline: 3px solid #79400f;
+    outline-offset: 3px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daftar Buku - Toko Buku Kita</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <!-- Menu Navigasi -->
+    <div class="menu">
+        <a href="index.html">Beranda</a>
+        <a href="buku.html">Daftar Buku</a>
+    </div>
+
+    <!-- Bagian Konten Utama -->
+    <div class="konten">
+        <h1>Daftar Buku</h1>
+        <p style="text-align: center; color: #666;">Data buku dimuat dari REST API (<code>/api/buku</code>)</p>
+        
+        <!-- Filter dan Pencarian Buku -->
+        <div class="filter-box">
+            <input type="search" id="cari-buku" aria-label="Cari buku berdasarkan judul atau penulis" placeholder="Cari judul buku atau penulis..." autocomplete="off">
+            <select id="filter-kategori" aria-label="Filter kategori buku">
+                <option value="semua">Semua Kategori</option>
+                <option value="Novel">Novel</option>
+                <option value="Pengembangan Diri">Pengembangan Diri</option>
+                <option value="Teknologi">Teknologi</option>
+                <option value="Sastra">Sastra</option>
+            </select>
+        </div>
+
+        <!-- Status Loading / Pesan API -->
+        <div id="status-pesan" class="status-pesan" role="status" aria-live="polite">Memuat data buku dari API...</div>
+
+        <!-- Wadah Daftar Buku yang Dihasilkan oleh JavaScript -->
+        <div id="daftar-buku"></div>
+
+        <br>
+        <div style="text-align: center;">
+            <a href="index.html">Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <!-- Bagian Bawah Website -->
+    <footer>
+        <p>&copy; 2026 Toko Buku Kita.</p>
+    </footer>
+    <!-- Menghubungkan file JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
