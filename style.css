@@ -9,6 +9,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Pengaturan untuk menu navigasi */
@@ -37,7 +41,7 @@ body {
 .konten {
     width: min(90%, 960px);    /* Lebar responsif */
     max-width: 900px;
-    margin: 20px auto;         /* Membuat kotak berada di tengah layar */
+    margin: auto;              /* Kotak berada tepat di tengah (horizontal & vertikal) */
     background-color: white;   /* Warna kotak putih */
     padding: 25px 30px;
     border: 2px solid #d2b48c; /* Garis pinggir cokelat muda */
@@ -229,7 +233,6 @@ footer {
     color: white;
     text-align: center;
     padding: 12px;
-    margin-top: 30px;              /* Jarak dari atas */
 }
 
 /* Responsif pada layar HP */

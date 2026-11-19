@@ -1,57 +1,85 @@
-# Toko Buku Kita — Website + REST API
+# Tugas Pemrograman Web (Semester 5)
+## Proyek: Website Toko Buku Kita (Arsitektur REST API Native)
 
-Proyek ini terdiri dari dua halaman (Beranda dan Daftar Buku) dan server REST API sederhana menggunakan **Node.js 18 atau lebih baru**. Tidak memerlukan Express, `npm install`, atau internet.
 
-## Menjalankan di Antigravity IDE / VS Code (Windows)
+## 📌 Penjelasan Teknologi & Konsep yang Digunakan
 
-1. Ekstrak ZIP, kemudian buka folder `latihan_1_web/toko-buku` di editor.
-2. Pastikan Node.js sudah terpasang (cek dengan `node -v`).
-3. Buka terminal pada folder **toko-buku** (folder tempat file `package.json`).
-4. Pada terminal **PowerShell**, jalankan:
+Berikut adalah rincian teknologi dan konsep yang diterapkan:
 
-   ```powershell
-   npm.cmd start
-   ```
+### 1. Frontend (Sisi Klien)
 
-   Pada terminal **CMD**, bisa juga jalankan `npm start`.
-5. Buka **http://localhost:3000** untuk beranda atau **http://localhost:3000/buku.html** untuk daftar buku.
-6. Uji REST API di **http://localhost:3000/api/buku**.
-7. Untuk menghentikan server, tekan `Ctrl+C`.
+* **HTML5 (Hypertext Markup Language 5)**:
+  * Menggunakan elemen semantik standar (`<header>`, `<nav>`, `<article>`, `<section>`, `<footer>`) untuk menyusun struktur halaman yang baik, terstandarisasi W3C, dan ramah aksesibilitas (*accessibility*).
 
-**Penting:** Jangan membuka `buku.html` lewat `file://` atau Live Server jika ingin mengakses REST API ini. Selalu gunakan alamat `localhost:3000` karena endpoint `/api/buku` disediakan oleh `server.js`.
+* **CSS3 (Cascading Style Sheets 3)**:
+  * **Flexbox Layout**: Mengatur tata letak halaman secara fleksibel.
+  * **Centered Card Layout**: Kotak konten utama (`.konten`) diposisikan presisi di tengah layar (vertikal dan horizontal) menggunakan `margin: auto` pada container flex.
+  * **Sticky Footer**: Bagian *footer* (`<footer>`) selalu berada di bagian paling bawah layar (*viewport*) meskipun konten halaman sedang sedikit.
+  * **Responsive Web Design**: Menggunakan *Media Queries* (`@media (max-width: 600px)`) agar ukuran elemen, form filter, dan kartu buku menyesuaikan diri secara otomatis pada perangkat desktop, tablet, maupun layar ponsel pintar (*mobile*).
 
-## Endpoint REST API
+* **Vanilla JavaScript (ES6+)**:
+  * **Asynchronous Programming (`async/await` & `fetch`)**: Mengambil data buku dari REST API secara *asynchronous* tanpa perlu memuat ulang (*reload*) seluruh halaman (konsep dasar *Single-Page Application / AJAX*).
+  * **DOM Manipulation Dinamis**: Merender data JSON yang diterima dari server menjadi elemen-elemen kartu buku HTML secara terprogram (`createElement`, `append`, `replaceChildren`).
+  * **Fitur Filter & Live Search**: Menyaring data buku berdasarkan kata kunci judul/penulis serta filter kategori secara *real-time* di sisi klien (*client-side filtering*).
+  * **Format Mata Uang Rupiah**: Menggunakan API internasionalisasi bawaan browser (`Intl.NumberFormat('id-ID')`) untuk memformat angka harga ke format mata uang Rupiah secara rapi dan standar.
 
-| Metode | Alamat | Kegunaan |
-|---|---|---|
-| `GET` | `/api/buku` | Tampilkan semua buku |
-| `GET` | `/api/buku/1` | Tampilkan buku berdasarkan ID |
-| `POST` | `/api/buku` | Tambah buku baru |
-| `PUT` | `/api/buku/1` | Ubah seluruh data buku ID 1 |
-| `DELETE` | `/api/buku/1` | Hapus buku ID 1 |
+---
 
-Contoh tambah buku di PowerShell:
+### 2. Backend (Sisi Server)
 
-```powershell
-$body = @{ judul = 'Belajar HTML'; penulis = 'Penulis Baru'; kategori = 'Teknologi'; harga = 50000; stok = 4; deskripsi = 'Buku latihan pemrograman web.' } | ConvertTo-Json
-Invoke-RestMethod -Uri http://localhost:3000/api/buku -Method Post -ContentType 'application/json' -Body $body
-```
+* **Node.js Runtime (v18+)**:
+  * Menjalankan server lokal dan memproses logika bisnis tanpa memerlukan server eksternal seperti Apache atau Nginx.
 
-Data disimpan ke `buku.json`, sehingga perubahan dari POST/PUT/DELETE akan tetap tersimpan. Form input di website belum disediakan; pengelolaan data bisa dilakukan lewat REST API.
+* **Modul Bawaan (Native Modules - Zero Dependencies)**:
+  * **`node:http`**:
+    * Membangun HTTP Web Server dari dasar (*scratch*).
+    * Mengelola siklus *Request* dan *Response* (membaca *headers*, menangani metode HTTP, dan menulis respon).
+    * Mengimplementasikan *router* untuk menyajikan berkas statis (HTML, CSS, JS, JPG) serta routing untuk REST API (`/api/buku`).
+  * **`node:fs`**:
+    * Menangani operasi baca-tulis berkas basis data (`buku.json`).
+    * **Atomic File Write**: Menggunakan mekanisme penulisan ke berkas sementara (`.tmp`) sebelum menggantikan berkas utama guna menjamin integritas data agar tidak rusak (*corrupt*) jika server berhenti tiba-tiba saat proses penyimpanan.
+  * **`node:path`**:
+    * Menstandarisasi jalur berkas sistem dan mencegah celah keamanan *Path Traversal*.
 
-## Menguji proyek
+---
 
-Di folder `toko-buku`, jalankan:
+### 3. Database / Penyimpanan Data
 
-```powershell
-npm.cmd test
-```
+* **JSON Flat-File Database (`buku.json`)**:
+  * Menggunakan berkas JSON terstruktur untuk menyimpan entitas buku (ID, judul, penulis, harga, kategori, deskripsi, dan stok).
+  * Format JSON dipilih sebagai standar baku pertukaran data yang ringan dan terintegrasi secara alami dengan JavaScript.
 
-Pengujian menggunakan data sementara, jadi tidak mengubah `buku.json` asli.
+---
 
-## Mengatasi error
+### 4. Arsitektur REST API & Protokol HTTP
 
-- `npm.ps1 cannot be loaded`: gunakan `npm.cmd start` pada PowerShell.
-- `ENOENT package.json`: pastikan terminal sudah berada di folder `toko-buku`, bukan folder induknya.
-- `Port 3000 sudah digunakan`: hentikan server yang masih aktif atau jalankan `$env:PORT=3001; npm.cmd start` di PowerShell.
-- Data buku tidak muncul: cek server masih aktif dan buka website melalui `http://localhost:3000/buku.html`.
+Sistem menerapkan kaidah arsitektur **REST (Representational State Transfer)**:
+* Pemisahan tugas yang jelas antara *Client* (penyaji antarmuka) dan *Server* (penyedia data dan logika).
+* Menggunakan metode HTTP standar sesuai fungsinya:
+  * **`GET /api/buku`**: Mengambil daftar seluruh buku (mendukung *query filtering*).
+  * **`GET /api/buku/:id`**: Mengambil rincian spesifik satu buku berdasarkan ID.
+  * **`POST /api/buku`**: Menambahkan data buku baru ke database.
+  * **`PUT /api/buku/:id`**: Memperbarui informasi buku yang sudah ada.
+  * **`DELETE /api/buku/:id`**: Menghapus data buku dari database.
+* Menggunakan *HTTP Status Codes* yang sesuai standar industri:
+  * `200 OK` (Permintaan berhasil)
+  * `201 Created` (Data baru berhasil disimpan)
+  * `400 Bad Request` (Validasi input data gagal)
+  * `404 Not Found` (Buku / rute tidak ditemukan)
+  * `500 Internal Server Error` (Kesalahan internal server)
+
+
+
+## 📸 Dokumentasi & Tangkapan Layar (Screenshots)
+
+> **Catatan untuk Mahasiswa:** Simpan file tangkapan layar Anda di dalam folder `screenshots/` dengan nama berkas di bawah ini agar otomatis tampil di laporan.
+
+### 1. Tampilan Halaman Beranda (Home)
+![Tampilan Halaman Beranda](./screenshots/beranda.png)
+
+---
+
+### 2. Tampilan Halaman Katalog Daftar Buku (Data dari REST API)
+![Tampilan Halaman Daftar Buku](./screenshots/daftar-buku.png)
+
+---
