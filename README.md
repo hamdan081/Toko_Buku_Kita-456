@@ -72,7 +72,6 @@ Sistem menerapkan kaidah arsitektur **REST (Representational State Transfer)**:
 
 ## 📸 Dokumentasi & Tangkapan Layar (Screenshots)
 
-> **Catatan untuk Mahasiswa:** Simpan file tangkapan layar Anda di dalam folder `screenshots/` dengan nama berkas di bawah ini agar otomatis tampil di laporan.
 
 ### 1. Tampilan Halaman Beranda (Home)
 ![Tampilan Halaman Beranda](./screenshots/beranda.png)
